@@ -25,7 +25,7 @@ Create a `.env.local` file in the project root with the following variables:
 
 ```bash
 # Resend API key (get from https://resend.com/)
-RESEND_API_KEY=your_resend_api_key_here
+RESEND_API_TOKEN=your_resend_api_key_here
 
 # Email addresses for contact form
 RESEND_FROM=Portfolio Contact <noreply@works-kuroneko.com>

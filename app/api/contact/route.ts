@@ -15,13 +15,13 @@ const contactSchema = z.object({
 export async function POST(request: Request) {
   try {
     // Get environment variables directly in Edge Runtime
-    const RESEND_API_KEY = process.env.RESEND_API_KEY
+    const RESEND_API_TOKEN = process.env.RESEND_API_TOKEN
     const RESEND_FROM = process.env.RESEND_FROM
     const RESEND_TO = process.env.RESEND_TO
 
-    if (!RESEND_API_KEY || !RESEND_FROM || !RESEND_TO) {
+    if (!RESEND_API_TOKEN || !RESEND_FROM || !RESEND_TO) {
       console.error("Missing environment variables:", {
-        RESEND_API_KEY: !!RESEND_API_KEY,
+        RESEND_API_TOKEN: !!RESEND_API_TOKEN,
         RESEND_FROM: !!RESEND_FROM,
         RESEND_TO: !!RESEND_TO,
       })
@@ -42,7 +42,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: true })
     }
 
-    const resend = new Resend(RESEND_API_KEY)
+    const resend = new Resend(RESEND_API_TOKEN)
     const subject = `Kuroneko Contact: ${name}`
     const submittedAt = new Date().toISOString()
 
