@@ -5,7 +5,7 @@ const envSchema = z.object({
   RESEND_FROM: z
     .string()
     .min(1, "RESEND_FROM is required")
-    .describe("e.g. 'Portfolio Contact <noreply@works-kuroneko.com>'"),
+    .describe("e.g. 'Kuroneko Contact <noreply@works-kuroneko.com>'"),
   RESEND_TO: z
     .string()
     .min(1, "RESEND_TO is required")
