@@ -40,7 +40,12 @@ export function HeroSection() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
-                Web App Developer / UI Designer
+                <span className="md:hidden">
+                  Web App Developer<br />UI Designer
+                </span>
+                <span className="hidden md:inline">
+                  Web App Developer / UI Designer
+                </span>
               </motion.p>
             </motion.div>
 
