@@ -97,8 +97,9 @@ export function WorksSection() {
   }
 
   return (
-    <section id="works" className="py-24 md:py-32 bg-muted/30">
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="works" className="py-24 md:py-32 relative">
+      <div className="absolute inset-0 bg-white/30"></div>
+      <div className="relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

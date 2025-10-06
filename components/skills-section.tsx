@@ -47,7 +47,7 @@ const skillsData = {
   devops: {
     label: "DevOps",
     data: {
-      labels: ["Git", "AWS", "Docker", "MySQL", "Linux", "Vim"],
+      labels: ["Git", "AWS", "Docker      ", "MySQL", "         Linux", "Vim"],
       datasets: [
         {
           label: "Skill Level",

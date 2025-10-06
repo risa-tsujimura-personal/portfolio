@@ -5,7 +5,7 @@ const envSchema = z.object({
   RESEND_FROM: z
     .string()
     .min(1, "RESEND_FROM is required")
-    .describe("e.g. 'Portfolio Contact <noreply@your-domain.com>'"),
+    .describe("e.g. 'Portfolio Contact <noreply@works-kuroneko.com>'"),
   RESEND_TO: z
     .string()
     .min(1, "RESEND_TO is required")
@@ -14,11 +14,18 @@ const envSchema = z.object({
 
 export type Env = z.infer<typeof envSchema>;
 
-export const env: Env = envSchema.parse({
-  RESEND_API_KEY: process.env.RESEND_API_KEY,
-  RESEND_FROM: process.env.RESEND_FROM,
-  RESEND_TO: process.env.RESEND_TO,
-});
+export const env: Env = (() => {
+  try {
+    return envSchema.parse({
+      RESEND_API_KEY: process.env.RESEND_API_TOKEN || process.env.RESEND_API_KEY,
+      RESEND_FROM: process.env.RESEND_FROM,
+      RESEND_TO: process.env.RESEND_TO,
+    });
+  } catch (error) {
+    console.error("Environment variables validation failed:", error);
+    throw new Error("メール送信の設定が完了していません。管理者にお問い合わせください。");
+  }
+})();
 
 
 

@@ -28,8 +28,7 @@ Create a `.env.local` file in the project root with the following variables:
 RESEND_API_KEY=your_resend_api_key_here
 
 # Email addresses for contact form
-# e.g. "Portfolio Contact <noreply@your-domain.com>"
-RESEND_FROM=Portfolio Contact <noreply@your-domain.com>
+RESEND_FROM=Portfolio Contact <noreply@works-kuroneko.com>
 
 # Destination that receives contact messages
 RESEND_TO=your-email@example.com
