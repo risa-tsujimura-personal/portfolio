@@ -43,7 +43,7 @@ export async function POST(request: Request) {
     }
 
     const resend = new Resend(RESEND_API_KEY)
-    const subject = `Portfolio Contact: ${name}`
+    const subject = `Kuroneko Contact: ${name}`
     const submittedAt = new Date().toISOString()
 
     // Generate HTML content manually to avoid React Email render issues
