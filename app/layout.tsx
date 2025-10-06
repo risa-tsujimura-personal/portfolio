@@ -27,15 +27,16 @@ const bodoni = localFont({
 })
 
 export const metadata: Metadata = {
-  title: "Risa Tsujimura - Portfolio",
+  title: "Kuroneko - Portfolio",
   description: "フロントエンド開発者のポートフォリオサイト。React、Next.js、TypeScriptを使用したWebアプリケーション開発の実績を紹介しています。",
   keywords: ["ポートフォリオ", "フロントエンド", "React", "Next.js", "TypeScript", "Web開発"],
-  authors: [{ name: "Risa Tsujimura" }],
+  authors: [{ name: "Kuroneko" }],
   icons: {
     icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
   },
   openGraph: {
-    title: "Risa Tsujimura - Portfolio",
+    title: "Kuroneko - Portfolio",
     description: "フロントエンド開発者のポートフォリオサイト",
     type: "website",
   },
