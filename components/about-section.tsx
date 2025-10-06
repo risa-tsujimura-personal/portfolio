@@ -45,23 +45,38 @@ export function AboutSection() {
               <Button
                 variant="outline"
                 size="sm"
-                className="hover:bg-[var(--theme-accent)] hover:text-white hover:border-[var(--theme-accent)] bg-transparent border-white/20"
+                className="hover:bg-[var(--theme-accent)] hover:text-white hover:border-[var(--theme-accent)] bg-transparent border-white/20 group"
                 style={{ color: "#00053a" }}
                 asChild
               >
-                <a href="https://www.wantedly.com/id/risa_tsujimura" target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  Wantedly
+                <a 
+                  href="https://www.wantedly.com/id/risa_tsujimura" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="group-hover:text-white transition-colors duration-200"
+                  style={{ color: "#00053a" }}
+                >
+                  <ExternalLink className="w-4 h-4 mr-2 group-hover:text-white" />
+                  <span className="group-hover:text-white">Wantedly</span>
                 </a>
               </Button>
               <Button
                 variant="outline"
                 size="sm"
-                className="hover:bg-[var(--theme-accent)] hover:text-white hover:border-[var(--theme-accent)] bg-transparent border-white/20"
+                className="hover:bg-[var(--theme-accent)] hover:text-white hover:border-[var(--theme-accent)] bg-transparent border-white/20 group"
                 style={{ color: "#00053a" }}
+                asChild
               >
-                <Github className="w-4 h-4 mr-2" />
-                GitHub
+                <a 
+                  href="https://github.com/risa-tsujimura-personal" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="group-hover:text-white transition-colors duration-200"
+                  style={{ color: "#00053a" }}
+                >
+                  <Github className="w-4 h-4 mr-2 group-hover:text-white" />
+                  <span className="group-hover:text-white">GitHub</span>
+                </a>
               </Button>
             </div>
           </motion.div>

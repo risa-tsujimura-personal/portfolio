@@ -35,15 +35,15 @@ export function ContactSection() {
       }
 
       toast({
-        title: "Message sent successfully!",
-        description: "Thank you for your message. I'll get back to you soon.",
+        title: "メッセージを送信しました！",
+        description: "お問い合わせありがとうございます。近日中にご返信いたします。",
       })
 
       setFormData({ name: "", email: "", comment: "" })
     } catch (error) {
       toast({
-        title: "Error sending message",
-        description: error instanceof Error ? error.message : "Please try again later.",
+        title: "メッセージの送信に失敗しました",
+        description: error instanceof Error ? error.message : "しばらく時間をおいて再度お試しください。",
         variant: "destructive",
       })
     } finally {
@@ -59,8 +59,9 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-24 md:py-32">
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-24 md:py-32 bg-[url('/background.png')] bg-[length:100%_auto] bg-repeat-y bg-top bg-center relative">
+      <div className="absolute inset-0 bg-white/30"></div>
+      <div className="relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

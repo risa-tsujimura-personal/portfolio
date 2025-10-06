@@ -31,15 +31,21 @@ export function Navigation() {
   }, [])
 
   const scrollToSection = (id: string) => {
-    if (id === "top") {
-      window.scrollTo({ top: 0, behavior: "smooth" })
-    } else {
-      const element = document.getElementById(id)
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" })
+    console.log("Scrolling to section:", id) // デバッグ用ログ
+    setIsOpen(false) // メニューを先に閉じる
+    
+    // 少し遅延を入れてからスクロール
+    setTimeout(() => {
+      if (id === "top") {
+        window.scrollTo({ top: 0, behavior: "smooth" })
+      } else {
+        const element = document.getElementById(id)
+        console.log("Found element:", element) // デバッグ用ログ
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" })
+        }
       }
-    }
-    setIsOpen(false)
+    }, 100)
   }
 
   return (
@@ -87,6 +93,7 @@ export function Navigation() {
             size="sm"
             className="md:hidden text-white hover:text-white/80"
             onClick={() => setIsOpen(!isOpen)}
+            style={{ color: "#00053a" }}
           >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </Button>
@@ -103,19 +110,23 @@ export function Navigation() {
             className="md:hidden bg-[var(--theme-background)]/85 border-t border-white/20"
           >
             <div className="px-4 py-4 space-y-4">
-              {showNavigation &&
-                navItems.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className={`block w-full text-left text-sm transition-colors hover:text-white/80 font-heading ${
-                      activeSection === item.id ? "text-white" : "text-white"
-                    }`}
-                    style={{ color: "#00053a" }}
-                  >
-                    {item.label}
-                  </button>
-                ))}
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    console.log("Mobile menu clicked:", item.id) // デバッグ用ログ
+                    scrollToSection(item.id)
+                  }}
+                  className={`block w-full text-left text-sm transition-colors hover:text-white/80 font-heading py-2 px-2 ${
+                    activeSection === item.id ? "text-white" : "text-white"
+                  }`}
+                  style={{ color: "#00053a" }}
+                  type="button"
+                >
+                  {item.label}
+                </button>
+              ))}
             </div>
           </motion.div>
         )}

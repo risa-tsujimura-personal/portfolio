@@ -47,7 +47,7 @@ const skillsData = {
   devops: {
     label: "DevOps",
     data: {
-      labels: ["Git", "AWS", "Docker", "MySQL", "Linux", "Vim"],
+      labels: ["Git", "AWS", "Docker      ", "MySQL", "         Linux", "Vim"],
       datasets: [
         {
           label: "Skill Level",
@@ -76,7 +76,8 @@ const skillLevels = [
 export function SkillsSection() {
   const chartOptions = {
     responsive: true,
-    maintainAspectRatio: false,
+    maintainAspectRatio: true,
+    aspectRatio: 1,
     scales: {
       r: {
         beginAtZero: true,
@@ -155,7 +156,7 @@ export function SkillsSection() {
         </motion.div>
 
         {/* Charts */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {Object.entries(skillsData).map(([key, skill], index) => (
             <motion.div
               key={key}
@@ -163,11 +164,13 @@ export function SkillsSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="bg-slate-800/50 rounded-2xl p-6 shadow-lg border border-slate-700/30"
+              className="bg-slate-800/50 rounded-2xl p-6 shadow-lg border border-slate-700/30 flex flex-col"
             >
               <h3 className="text-xl text-center mb-6 font-heading text-white">{skill.label}</h3>
-              <div className="h-64">
-                <Radar data={skill.data} options={chartOptions} />
+              <div className="flex-1 flex items-center justify-center">
+                <div className="w-full max-w-xs mx-auto aspect-square">
+                  <Radar data={skill.data} options={chartOptions} />
+                </div>
               </div>
             </motion.div>
           ))}
