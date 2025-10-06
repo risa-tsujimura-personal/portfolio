@@ -31,6 +31,9 @@ export const metadata: Metadata = {
   description: "フロントエンド開発者のポートフォリオサイト。React、Next.js、TypeScriptを使用したWebアプリケーション開発の実績を紹介しています。",
   keywords: ["ポートフォリオ", "フロントエンド", "React", "Next.js", "TypeScript", "Web開発"],
   authors: [{ name: "Risa Tsujimura" }],
+  icons: {
+    icon: "/favicon.ico",
+  },
   openGraph: {
     title: "Risa Tsujimura - Portfolio",
     description: "フロントエンド開発者のポートフォリオサイト",
