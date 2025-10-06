@@ -61,7 +61,7 @@ export function ContactSection() {
   return (
     <section id="contact" className="py-24 md:py-32 bg-[url('/background.png')] bg-[length:100%_auto] bg-repeat-y bg-top bg-center relative">
       <div className="absolute inset-0 bg-white/30"></div>
-      <div className="relative z-10">
+      <div className="relative z-10 px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
