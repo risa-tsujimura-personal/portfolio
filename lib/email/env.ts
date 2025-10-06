@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const envSchema = z.object({
-  RESEND_API_KEY: z.string().min(1, "RESEND_API_KEY is required"),
+  RESEND_API_TOKEN: z.string().min(1, "RESEND_API_TOKEN is required"),
   RESEND_FROM: z
     .string()
     .min(1, "RESEND_FROM is required")
@@ -17,7 +17,7 @@ export type Env = z.infer<typeof envSchema>;
 export const env: Env = (() => {
   try {
     return envSchema.parse({
-      RESEND_API_KEY: process.env.RESEND_API_TOKEN || process.env.RESEND_API_KEY,
+      RESEND_API_TOKEN: process.env.RESEND_API_TOKEN,
       RESEND_FROM: process.env.RESEND_FROM,
       RESEND_TO: process.env.RESEND_TO,
     });
