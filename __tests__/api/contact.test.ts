@@ -1,27 +1,23 @@
-import { POST } from "@/app/api/contact/route"
 import { NextRequest } from "next/server"
 
-// Mock Resend
-jest.mock("@/lib/email/config", () => ({
-  resend: {
-    emails: {
-      send: jest.fn().mockResolvedValue({ id: "test-email-id" }),
-    },
-  },
-  emailSender: {
-    from: "test@example.com",
-    to: "recipient@example.com",
-  },
+const sendMailMock = jest.fn().mockResolvedValue({ messageId: "test-email-id" })
+
+// Mock nodemailer (Gmail SMTP)
+jest.mock("nodemailer", () => ({
+  createTransport: jest.fn(() => ({
+    sendMail: sendMailMock,
+  })),
 }))
 
-// Mock React Email render
-jest.mock("@react-email/render", () => ({
-  render: jest.fn().mockReturnValue("<html>test email</html>"),
-}))
+process.env.GMAIL_USER = "test@example.com"
+process.env.GMAIL_APP_PASSWORD = "test-app-password"
+process.env.CONTACT_TO = "recipient@example.com"
+
+const { POST } = require("@/app/api/contact/route")
 
 describe("/api/contact", () => {
   beforeEach(() => {
-    jest.clearAllMocks()
+    sendMailMock.mockClear()
   })
 
   it("should send email with valid data", async () => {

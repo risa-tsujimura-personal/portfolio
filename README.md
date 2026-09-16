@@ -1,37 +1,36 @@
 # Portfolio Landing Page
 
-A modern portfolio website built with Next.js, featuring a contact form with email functionality powered by Resend.
+A modern portfolio website built with Next.js, featuring a contact form with email functionality powered by Gmail SMTP (via nodemailer).
 
 ## Features
 
 - Responsive design with modern UI components
 - Contact form with email sending capability
-- Email templates using React Email
 - Spam protection with honeypot fields
 - Input validation and error handling
 - Toast notifications for user feedback
 
 ## Contact Form Setup
 
-### 1. Resend Configuration
+### 1. Gmail App Password
 
-1. Sign up for a [Resend](https://resend.com/) account
-2. Get your API key from the Resend dashboard
-3. Set up your domain for sending emails (or use Resend's test domain)
+1. Enable 2-Step Verification on the Gmail account you want to send from
+2. Generate an App Password at https://myaccount.google.com/apppasswords
+3. Use that 16-character password as `GMAIL_APP_PASSWORD` below (not your normal Gmail password)
 
 ### 2. Environment Variables
 
 Create a `.env.local` file in the project root with the following variables:
 
 ```bash
-# Resend API key (get from https://resend.com/)
-RESEND_API_TOKEN=your_resend_api_key_here
+# Gmail address used to authenticate and send the contact form emails
+GMAIL_USER=your-address@gmail.com
 
-# Email addresses for contact form
-RESEND_FROM=Portfolio Contact <noreply@works-kuroneko.com>
+# App password generated above
+GMAIL_APP_PASSWORD=your-16-char-app-password
 
-# Destination that receives contact messages
-RESEND_TO=your-email@example.com
+# Destination that receives contact messages (defaults to GMAIL_USER if unset)
+CONTACT_TO=your-address@gmail.com
 ```
 
 ### 3. Testing the Contact Form
@@ -63,11 +62,6 @@ pnpm test:watch
 ├── components/
 │   ├── contact-section.tsx     # Contact form component
 │   └── ...
-├── lib/email/
-│   ├── config.ts              # Resend client configuration
-│   ├── env.ts                 # Environment variable validation
-│   └── templates/
-│       └── contact-message.tsx # Email template
 └── __tests__/
     └── api/
         └── contact.test.ts     # API route tests
@@ -76,8 +70,7 @@ pnpm test:watch
 ## Technologies Used
 
 - **Next.js 15** - React framework
-- **Resend** - Email sending service
-- **React Email** - Email template system
+- **Nodemailer** - Email sending via Gmail SMTP
 - **Zod** - Schema validation
 - **Jest** - Testing framework
 - **Tailwind CSS** - Styling
@@ -110,8 +103,8 @@ pnpm start
 
 ### Email Not Sending
 
-1. Check that your `.env.local` file has the correct `RESEND_API_KEY`
-2. Verify that your `RESEND_FROM` email is verified in Resend
+1. Check that your `.env.local` file has the correct `GMAIL_USER` and `GMAIL_APP_PASSWORD`
+2. Verify you generated an App Password (not your normal Gmail password) with 2-Step Verification enabled
 3. Check the browser console and server logs for error messages
 
 ### Environment Variables Not Loading
